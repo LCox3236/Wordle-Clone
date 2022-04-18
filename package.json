@@ -1,0 +1,22 @@
+{
+  "name": "wordle-clone",
+  "version": "1.0.0",
+  "description": "Wordle Clone",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LCox3236/Wordle-Clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LCox3236/Wordle-Clone/issues"
+  },
+  "homepage": "https://github.com/LCox3236/Wordle-Clone#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

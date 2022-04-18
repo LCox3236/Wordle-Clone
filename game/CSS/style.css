@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    display: flex;
+    background-color: #000000;
+    text-align: center;
+    flex-direction: column;
+    padding-top: 2%;
+    color: #ffffff;
+
+}
+
+#container {
+    width: 400px;
+    height: 50%;
+    
+    margin: 10px auto;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-evenly;
+    font-family: 'Audiowide';
+    color: #ffffff;
+}
+ul li {
+    background: #000000;
+    border: 2px solid #ffffff;
+    padding: 12px;
+    height: 50%;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    
+}
+#inputBox{
+    padding: 10px;
+    margin: 0px 25% 0px 25%;
+}
+
+#answerOutput{
+    display: none;
+}
+
+
+#restartButton{
+    width: 200px;
+    height: 50px;
+    font-size: x-large;
+    font-weight: bold;
+    align-self: center;
+    display: none;
+    margin-top: 25px;
+    
+
+}
