@@ -20224,14 +20224,43 @@ var input = "";
 var currentLine = 0;
 var start = currentLine * word.length;
 var end = currentLine * word.length + word.length;
+const keyboard = document.querySelector("[data-keyboard]");
 var data;
 
 function startInteraction() {
   document.addEventListener("keydown", myKeyPress);
+  document.addEventListener("click", handleMouseClick);
 }
 
 function endInteraction() {
   document.removeEventListener("keydown", myKeyPress);
+  document.removeEventListener("click", handleMouseClick);
+}
+
+function handleMouseClick(e) {
+  if (e.target.matches("[data-key]")) {
+    //pressKey(e.target.dataset.key)
+    //console.log("letter pressed");
+
+    processInput(e.target.dataset.key.charCodeAt(0));
+    return;
+  }
+
+  if (e.target.matches("[data-enter]")) {
+    //submitGuess()
+    //console.log("enter pressed");
+
+    processInput("13");
+    return;
+  }
+
+  if (e.target.matches("[data-delete]")) {
+    //deleteKey()
+    //console.log("delete pressed");
+    processInput("8");
+
+    return;
+  }
 }
 
 function pickWord() {
@@ -20276,7 +20305,13 @@ function checkWord() {
 function correctInput(start, end) {
   for (i = start; i < end; i++) {
     document.getElementById("letterBox" + i).style.background = "green";
+    keyboard
+      .querySelector(
+        `[data-key=${document.getElementById("letterBox" + i).textContent}]`
+      )
+      .classList.add("correct");
   }
+
   endInteraction();
   document.getElementById("answerOutput").style.display = "block";
   document.getElementById("answerOutput").textContent =
@@ -20296,12 +20331,27 @@ function incorrectInput(start, end) {
       word.includes(input[wordIndex].toLowerCase())
     ) {
       document.getElementById("letterBox" + i).style.background = "orange";
+      keyboard
+        .querySelector(
+          `[data-key=${document.getElementById("letterBox" + i).textContent}]`
+        )
+        .classList.add("wrong-location");
     } else if (
       word[wordIndex].toLowerCase() === input[wordIndex].toLowerCase()
     ) {
       document.getElementById("letterBox" + i).style.background = "green";
+      keyboard
+        .querySelector(
+          `[data-key=${document.getElementById("letterBox" + i).textContent}]`
+        )
+        .classList.add("correct");
     } else {
       document.getElementById("letterBox" + i).style.background = "grey";
+      keyboard
+        .querySelector(
+          `[data-key=${document.getElementById("letterBox" + i).textContent}]`
+        )
+        .classList.add("wrong");
     }
     wordIndex++;
   }
@@ -20373,6 +20423,10 @@ function restart() {
   document.getElementById("answerOutput").style.display = "none";
   document.getElementById("restartButton").style.display = "none";
   document.getElementById("restartButton").disabled = true;
+  let keys = keyboard.querySelectorAll(`[data-key]`);
+  keys.forEach((key) => {
+    key.classList.remove("correct", "wrong", "wrong-location");
+  });
   setUp();
 }
 

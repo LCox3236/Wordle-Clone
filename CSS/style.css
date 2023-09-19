@@ -1,63 +1,119 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    background-color: #000000;
-    text-align: center;
-    flex-direction: column;
-    padding-top: 2%;
-    color: #ffffff;
-
+  display: flex;
+  background-color: #000000;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 2%;
+  color: #ffffff;
 }
 
 #container {
-    width: 400px;
-    height: 50%;
-    
-    margin: 10px auto;
+  width: 400px;
+  height: 50%;
+
+  margin: 10px auto;
+}
+
+.key.wrong {
+  --lightness: 23%;
+}
+
+.key.wrong-location {
+  --hue: 49;
+  --saturation: 51%;
+  --lightness: 47%;
+}
+
+.key.correct {
+  --hue: 115;
+  --saturation: 29%;
+  --lightness: 43%;
+}
+
+.key:hover,
+.key:focus {
+  --lightness-offset: 10%;
+}
+
+.keyboard {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(20, minmax(auto, 1.25em));
+  grid-auto-rows: 3em;
+  gap: 0.25em;
+  justify-content: center;
+  width: 348px;
+  align-self: center;
+}
+
+.key {
+  font-size: inherit;
+  grid-column: span 2;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(
+    var(--hue, 200),
+    var(--saturation, 1%),
+    calc(var(--lightness-offset, 0%) + var(--lightness, 51%))
+  );
+  color: white;
+  fill: white;
+  text-transform: uppercase;
+  border-radius: 0.25em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.key.large {
+  grid-column: span 3;
+}
+
+.key > svg {
+  width: 1.75em;
+  height: 1.75em;
 }
 
 ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    justify-content: space-evenly;
-    font-family: 'Audiowide';
-    color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-evenly;
+  font-family: "Audiowide";
+  color: #ffffff;
 }
 ul li {
-    background: #000000;
-    border: 2px solid #ffffff;
-    padding: 12px;
-    height: 50%;
-    text-align: center;
-    font-size: x-large;
-    font-weight: bold;
-    
+  background: #000000;
+  border: 2px solid #ffffff;
+  padding: 12px;
+  height: 50%;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
 }
-#inputBox{
-    padding: 10px;
-    margin: 0px 25% 0px 25%;
-}
-
-#answerOutput{
-    display: none;
+#inputBox {
+  padding: 10px;
+  margin: 0px 25% 0px 25%;
 }
 
+#answerOutput {
+  display: none;
+}
 
-#restartButton{
-    width: 200px;
-    height: 50px;
-    font-size: x-large;
-    font-weight: bold;
-    align-self: center;
-    display: none;
-    margin-top: 25px;
-    
-
+#restartButton {
+  width: 200px;
+  height: 50px;
+  font-size: x-large;
+  font-weight: bold;
+  align-self: center;
+  display: none;
+  margin-top: 25px;
 }
